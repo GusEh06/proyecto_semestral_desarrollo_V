@@ -1,0 +1,157 @@
+/*Sección para Resetear Estilos*/
+@layer reset {
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+  
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  
+    body {
+      line-height: 1.5;
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+  
+    img, picture, video, canvas, svg {
+      display: block;
+      max-inline-size: 100%;
+    }
+  
+    input, button, textarea, select {
+      font: inherit;
+      letter-spacing: inherit;
+      word-spacing: inherit;
+      color: currentColor;
+    }
+  
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+  
+    ol, ul {
+      list-style: none;
+    }
+  
+    :not([class]) {
+      h1&, h2&, h3&, h4&, h5&, h6& {
+        margin-block: 0.75em;
+        line-height: 1.25;
+        text-wrap: balance;
+        letter-spacing: -0.05ch;
+      }
+  
+      p&, ol&, ul& {
+        margin-block: 1em;
+      }
+  
+      ol&, ul& {
+        padding-inline-start: 1.5em;
+        list-style: revert;
+      }
+  
+      li& {
+        margin-block: 0.5em;
+      }
+    }
+}
+
+
+
+/*Estilos Genéricos*/
+/*Esta clase se aplica a todos los botones ya que usan los mismos estilos*/
+.btn{
+    text-decoration: none;
+    color: inherit;
+    background-color: #FFFFFF;
+    border: 2px solid #ED0E64;
+    border-radius: 5px;
+    color: #ED0E64;
+}
+.btn:hover{
+    background-color: #ED0E64;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+
+/*NavBar*/
+.navbar{
+    display: flex;
+    background-color: #FFFFFF;
+    justify-content: space-between;
+    height: 8.5vh;
+    width: 100vw;
+
+    -webkit-box-shadow: 0px 4px 9px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 9px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 9px -4px rgba(0,0,0,0.75);
+
+    .navbar-btn{
+        display: flex;
+        flex-direction: row;
+        gap: 3em;
+        padding-right: 1em;
+
+        .navbar-btn-sections, .navbar-btn-logsign{
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            gap: 1.5em;
+
+            li{
+                a{
+                    padding: 12px;
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .navbar-btn-logsign{
+            .navbar-btn-logsign-login{
+                border: none;
+            }
+        }
+
+    }
+}
+
+
+
+/*Citas*/
+.citas{
+    height: 91vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .citas-box{
+        width: 50%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+
+        -webkit-box-shadow: 7px 8px 16px -10px rgba(0,0,0,0.75);
+        -moz-box-shadow: 7px 8px 16px -10px rgba(0,0,0,0.75);
+        box-shadow: 7px 8px 16px -10px rgba(0,0,0,0.75);
+    }
+
+    p{
+        font-size: 22.5px;
+        color: #ED0E64;
+        font-weight: 300;
+        height: auto;
+        margin: 0;
+    }
+
+    .citas-btn{
+        width: 22.5em;
+        height: 5em;
+        font-weight: bold;
+    }
+}
