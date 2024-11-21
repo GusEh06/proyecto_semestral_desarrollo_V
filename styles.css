@@ -267,62 +267,161 @@ header{
 /*inicio*/
 .inicio {
   .inicio-carrusel {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      height: calc(100vh - 8.5vh); /* Ajusta según la altura del navbar */
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vh - 8.5vh);
 
-      .inicio-carrusel-slides {
-          display: flex;
-          transition: transform 0.5s ease-in-out;
-          height: 100%;
+    .inicio-carrusel-slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
 
-          .slide {
-              min-width: 100%;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              color: white;
-              font-size: 24px;
+      .slide {
+        min-width: 100%;
+        height: 100%;
+        display: flex;
+        color: white;
+        font-size: 24px;
+        align-items: center;
 
-              &:nth-child(1) {
-                  background: #ff6f61;
-              }
+        &:nth-child(1) {
+          background: rgb(255, 255, 255);
+          background: linear-gradient(90deg, rgba(255, 255, 255, 1) 33%, rgba(208, 139, 153, 1) 82%);
+        }
 
-              &:nth-child(2) {
-                  background: #4caf50;
-              }
+        &:nth-child(2) {
+          background: rgb(208,139,153);
+          background: linear-gradient(90deg, rgba(208,139,153,1) 33%, rgba(255,255,255,1) 82%);
+        }
 
-              &:nth-child(3) {
-                  background: #2196f3;
-              }
-          }
+        &:nth-child(3) {
+          background: rgb(255, 255, 255);
+          background: linear-gradient(90deg, rgba(255, 255, 255, 1) 33%, rgba(208, 139, 153, 1) 82%);
+        }
+
+      
       }
 
-      .buttons {
+      .banner {
+        position: relative; /* Permite posicionar elementos hijos dentro de este contenedor */
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 0;
+        padding: 0;
+
+        img {
+          max-width: 40%;
+          height: auto;
+          border-radius: 8px;
+        }
+
+        .textos-carrusel {
+          width: 1500px;
+          display: flex;
+          align-items: start;
+          flex-direction: column;
+          justify-content: center;
+          gap: 10px;
+          color: #432e54;
+          
+          padding: 150px;
+        }
+        
+
+        .estrellitas {
           position: absolute;
-          top: 46.5%;
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
+          bottom: 60%; /* Ajusta la distancia desde el borde inferior */
+          right: 0px; /* Ajusta la distancia desde el borde derecho */
+        }
 
-
-          button {
-              background: rgba(0, 0, 0, 0.5);
-              border: none;
-              color: white;
-              font-size: 18px;
-              padding: 10px;
-              cursor: pointer;
-
-              &:hover {
-              background: rgba(0, 0, 0, 0.8);
-              }
-          }
+        .estrellitas img {
+          max-width: 300px; /* Tamaño ajustado de la imagen */
+          height: auto ;
+        }
       }
+    }
+    
+  .banner2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:1000px;
+    width: 2000px;
+    padding: px;
+    
+    .slide-box{
+      margin-left: 20px;
+      display: flex;
+      width:1500px;
+      height:600px ;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+     
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      
+    
+      
+    }
+    .slide-box-textos{
+      padding: 60px;
+      color: #432E54;
+
+      
+      }
+
+      .img-conatiner{
+        display: flex;
+        width: 600px;
+        justify-content: flex-end;
+      }
+
+      
+      
+  }
+
+  .banner3{
+    display: flex;
+    color:#3f4142;
+   
+  }
+
+  .banner3-texto{
+    flex-direction: column;
+    padding-left: 160px;
+    
+  }
+ 
+    .buttons {
+      position: absolute;
+      top: 46.5%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
   }
 }
+
 
 /*Noticias*/
 .noticias{
@@ -476,3 +575,89 @@ select {
 select option {
   padding: 10px;
 }
+
+/*noticias*/
+
+.noticias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px; /* Espaciado superior para evitar superposición */
+  gap: 20px; /* Espaciado entre las noticias */
+  background: rgb(174,68,90);
+  background: linear-gradient(0deg, rgba(174,68,90,1) 18%, rgba(255,255,255,1) 100%);
+  height: auto;
+}
+
+.noticias-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 60%;
+  max-width: 1200px;
+}
+
+.noticias-box-noticia {
+  display: flex;
+  gap: 20px;
+  align-items: center; /* Centra los elementos verticalmente */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 30px;
+  gap: 50px;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    width: 350px; /* Ancho mayor para hacer las imágenes más grandes */
+    height: 400px; /* Altura máxima ajustada */
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .textos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .titulo {
+      font-size: 1.8rem; /* Ajustar el texto si deseas mayor balance con la imagen */
+      font-weight: bold;
+      color: #432E54;
+    }
+
+    .contenido {
+      font-size: 1.2rem; /* Ajustar el tamaño del texto */
+      color: #6D6D6D;
+      line-height: 1.5;
+    }
+
+    .boton {
+      display: flex;
+      justify-content: center;
+
+      .btn-noticia {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        background-color: #432E54;
+        color: #FFFFFF;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #AE445A;
+        }
+      }
+    }
+  }
+}
+
