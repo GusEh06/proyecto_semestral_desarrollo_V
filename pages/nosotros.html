@@ -3,59 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medify</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Medify | Nosotros</title>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-  <header>
-    <!-- Logo -->
-    <a href="../index.html">
-        <img src="../imagenes/logo.svg" alt="Medify">
-    </a>
+    <header>
+        <!-- Logo -->
+        <a href="../index.html">
+            <img src="../imagenes/logo.svg" alt="Medify">
+        </a>
 
-    <!-- NavBar -->
-    <nav class="navbar">
-        <ul class="navbar-btn-sections">
-            <li><a href="#" class="btn">INICIO</a></li>
-            <li><a href="/pages/nosotros.html" class="btn">NOSOTROS</a></li>
-            <li><a href="/pages/citas.html" class="btn">CITAS</a></li>
+        <!-- NavBar -->
+        <nav class="navbar">
+            <ul class="navbar-btn-sections">
+                <li><a href="../index.html" class="btn">INICIO</a></li>
+                <li><a href="#" class="btn">NOSOTROS</a></li>
+                <li><a href="citas.html" class="btn">CITAS</a></li>
+            </ul>
+        </nav>
+
+        <ul class="button-logsign">
+            <li>
+                <button id="modal-inicio-open" href="" class="button-logsign-login btn">
+                    ENTRAR
+                </button>
+            </li>
+            <li>
+                <button id="modal-registro-open" class="button-logsign-signup btn">
+                    REGISTRARSE
+                </button>
+            </li>
         </ul>
-    </nav>
+    </header>
 
-    <ul class="button-logsign">
-        <li>
-            <button id="modal-inicio-open" href="" class="button-logsign-login btn">
-                ENTRAR
-            </button>
-        </li>
-        <li>
-            <button id="modal-registro-open" class="button-logsign-signup btn">
-                REGISTRARSE
-            </button>
-        </li>
-    </ul>
-</header>
-
-  <div class="inicio">
-    <div class="inicio-carrusel">
-        <div class="inicio-carrusel-slides">
-            <div class="slide">Noticia 1</div>
-            <div class="slide">Noticia 2</div>
-            <div class="slide">Noticia 3</div>
-        </div>
-        <div class="buttons">
-            <button id="prev">❮</button>
-            <button id="next">❯</button>
+    <!--Nosotros-->
+    <div class="nosotros">
+        <div class="nosotros-contenedor">
+            <div class="nosotros-contenedor-caja">
+                <h3>Laura Saucedo</h3> 
+                <img src="../imagenes/lauprofile.png" alt="Imagen 1">
+                <p>Mi nombre es Laura Saucedo, con cédula <br>7-714-1242, Estudio la Licenciatura en Desarrollo y Gestión de Software.
+                     he adquirido experiencia en distintas áreas de desarrollo, destacándome especialmente en el uso de lenguajes de programación como Python, Java y C#. Además, 
+                     cuento con conocimientos en inteligencia artificial.
+                </p>
+            </div>
+            <div class="nosotros-contenedor-caja">
+                <h3>Samir Caballero</h3> 
+                <img src="../imagenes/samirprofile.png" alt="Imagen 2">
+                <p>Mi nombre es Samir Caballero, con cédula <br>8-977-475,Curso la Licenciatura en Desarrollo y Gestión de 
+                Software.He aprendido sobre diferentes tecnologías y lenguajes de programación 
+                como C, Java, Python, C#.También he mejorado significativamente en el desarrollo de la lógica de programación,
+                 lo que me ha permitido entender y resolver problemas de forma más 
+                  eficiente.
+                </p>
+            </div>
+            <div class="nosotros-contenedor-caja">
+                <h3>Diego Torres</h3> 
+                <img src="imagenes/.png" alt="Imagen 3">
+            </div>
+            <div class="nosotros-contenedor-caja">
+                <h3>Gustavo Sánchez</h3> 
+                <img src="imagenes/.png" alt="Imagen 4">
+            </div>
         </div>
     </div>
-  </div>
 
-  <section class="noticias">
-
-  </section>
-
-
-<!-- Este es el Modal para Registrar Pacientes -->
+    <!-- Este es el Modal para Registrar Pacientes -->
     <dialog id="modal-registro">
         <div class="modal-header">
             <h2>Registro de Nuevo Paciente</h2>
@@ -130,8 +143,7 @@
         </form>
     </dialog>
     
-    <script src="/Scripts/fecha-nacimiento.js"></script>
-    <script src="/Scripts/script.js"></script>
-    <script src="/Scripts/modal.js"></script>
+    <script src="../Scripts/modal.js"></script>
+    <script src="../Scripts/fecha-nacimiento.js"></script>
 </body>
 </html>

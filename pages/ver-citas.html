@@ -3,59 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medify</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
 </head>
 <body>
-  <header>
-    <!-- Logo -->
-    <a href="../index.html">
-        <img src="../imagenes/logo.svg" alt="Medify">
-    </a>
+    <header>
+        <!-- Logo -->
+        <a href="../index.html">
+            <img src="../imagenes/logo.svg" alt="Medify">
+        </a>
 
-    <!-- NavBar -->
-    <nav class="navbar">
-        <ul class="navbar-btn-sections">
-            <li><a href="#" class="btn">INICIO</a></li>
-            <li><a href="/pages/nosotros.html" class="btn">NOSOTROS</a></li>
-            <li><a href="/pages/citas.html" class="btn">CITAS</a></li>
+        <!-- NavBar -->
+        <nav class="navbar">
+            <ul class="navbar-btn-sections">
+                <li><a href="../index.html" class="btn">INICIO</a></li>
+                <li><a href="nosotros.html" class="btn">NOSOTROS</a></li>
+                <li><a href="citas.html" class="btn">CITAS</a></li>
+            </ul>
+        </nav>
+
+        <ul class="button-logsign">
+            <li>
+                <button id="modal-inicio-open" href="" class="button-logsign-login btn">
+                    ENTRAR
+                </button>
+            </li>
+            <li>
+                <button id="modal-registro-open" class="button-logsign-signup btn">
+                    REGISTRARSE
+                </button>
+            </li>
         </ul>
-    </nav>
-
-    <ul class="button-logsign">
-        <li>
-            <button id="modal-inicio-open" href="" class="button-logsign-login btn">
-                ENTRAR
-            </button>
-        </li>
-        <li>
-            <button id="modal-registro-open" class="button-logsign-signup btn">
-                REGISTRARSE
-            </button>
-        </li>
-    </ul>
-</header>
-
-  <div class="inicio">
-    <div class="inicio-carrusel">
-        <div class="inicio-carrusel-slides">
-            <div class="slide">Noticia 1</div>
-            <div class="slide">Noticia 2</div>
-            <div class="slide">Noticia 3</div>
-        </div>
-        <div class="buttons">
-            <button id="prev">❮</button>
-            <button id="next">❯</button>
-        </div>
-    </div>
-  </div>
-
-  <section class="noticias">
-
-  </section>
+    </header>
 
 
-<!-- Este es el Modal para Registrar Pacientes -->
+
+    <!-- Este es el Modal para Registrar Pacientes -->
     <dialog id="modal-registro">
         <div class="modal-header">
             <h2>Registro de Nuevo Paciente</h2>
@@ -74,7 +56,7 @@
     
             <label for="telefono">Teléfono / Celular:</label>
             <input type="number" id="telefono" name="telefono" placeholder="Ingresa tu Teléfono o Celular" required 
-                   maxlength="8" pattern="[0-9]{8}" title="Solo se permiten 8 dígitos numéricos" inputmode="numeric">
+                    maxlength="8" pattern="[0-9]{8}" title="Solo se permiten 8 dígitos numéricos" inputmode="numeric">
             
             <label for="correo">Correo:</label>
             <input type="email" id="correo" name="correo" placeholder="Ingresa tu Correo" required>
@@ -130,8 +112,7 @@
         </form>
     </dialog>
     
-    <script src="/Scripts/fecha-nacimiento.js"></script>
-    <script src="/Scripts/script.js"></script>
-    <script src="/Scripts/modal.js"></script>
+    <script src="../Scripts/modal.js"></script>
+    <script src="../Scripts/fecha-nacimiento.js"></script>
 </body>
 </html>
