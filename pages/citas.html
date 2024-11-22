@@ -113,29 +113,29 @@
     
 
     <!-- Este es el Modal para que los Pacientes Inicien Sesión -->
-    <dialog id="modal-inicio">
-        <div class="modal-header">
-            <h2>Inicia Sesión</h2>
-            <button id="close-modal-inicio-btn">&times;</button>
-        </div>
-        <form id="contact-form" class="modal-form">
-            <!-- Datos personales -->
-            <label for="user">Correo o Cédula:</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu Correo o Cédula" required>        
-    
-            <!-- Contraseña -->
-            <label for="password">Contraseña:</label>
-            <input type="password" id="datapicker" class="form-control" name="password" placeholder="Ingresa tu Contraseña" required>
-    
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-    </dialog>
+<dialog id="modal-inicio">
+    <div class="modal-header">
+        <h2>Inicia Sesión</h2>
+        <button id="close-modal-inicio-btn">&times;</button>
+    </div>
+    <form id="contact-form" class="modal-form">
+        <!-- Datos personales -->
+        <label for="nombre">Correo o Cédula:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu Correo o Cédula" required>        
+
+        <!-- Contraseña -->
+        <label for="datapicker">Contraseña:</label>
+        <input type="password" id="datapicker" class="form-control" name="password" placeholder="Ingresa tu Contraseña" required>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</dialog>
     
     <script src="../Scripts/user-status.js"></script>
     <script src="../Scripts/citas.js"></script>
     <script src="../Scripts/modal.js"></script>
     <script src="../Scripts/fecha-nacimiento.js"></script>
-
+    <script src="../Scripts/login.js"></script>
 
     
 </body>
