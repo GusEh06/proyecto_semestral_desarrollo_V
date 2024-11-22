@@ -39,9 +39,9 @@
 
     <section class="citas">
         <div class="citas-box">
-            <button class="citas-btn citas-btn-agendar btn">Agendar Cita</button>
+            <button id="btn-agendar-cita" class="citas-btn citas-btn-agendar btn">Agendar Cita</button>
             <p>o</p>
-            <button class="citas-btn citas-btn-ver btn">Ver Citas</button>
+            <button id="btn-ver-citas" class="citas-btn citas-btn-ver btn">Ver Citas</button>
         </div>
     </section>
     
@@ -69,6 +69,13 @@
             
             <label for="correo">Correo:</label>
             <input type="email" id="correo" name="correo" placeholder="Ingresa tu Correo" required>
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="" disabled selected>Selecciona tu sexo</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+            </select>
     
             <!-- Fecha de nacimiento -->
             <fieldset>
@@ -120,7 +127,8 @@
             <button type="submit">Iniciar Sesión</button>
         </form>
     </dialog>
-    
+
+    <script src="../Scripts/citas.js"></script>
     <script src="../Scripts/modal.js"></script>
     <script src="../Scripts/fecha-nacimiento.js"></script>
     

@@ -56,10 +56,17 @@
     
             <label for="telefono">Teléfono / Celular:</label>
             <input type="number" id="telefono" name="telefono" placeholder="Ingresa tu Teléfono o Celular" required 
-                    maxlength="8" pattern="[0-9]{8}" title="Solo se permiten 8 dígitos numéricos" inputmode="numeric">
+                   maxlength="8" pattern="[0-9]{8}" title="Solo se permiten 8 dígitos numéricos" inputmode="numeric">
             
             <label for="correo">Correo:</label>
             <input type="email" id="correo" name="correo" placeholder="Ingresa tu Correo" required>
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="" disabled selected>Selecciona tu sexo</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+            </select>
     
             <!-- Fecha de nacimiento -->
             <fieldset>
