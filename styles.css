@@ -111,6 +111,8 @@ header{
     }
   }
 
+
+
   /*NavBar*/
   .navbar {
     display: flex;
@@ -139,6 +141,41 @@ header{
   }
 
 }
+
+.user-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.user-icon-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.user-icon-initials {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #AE445A;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 
 .navbar-btn-sections, .navbar-btn-logsign {
   list-style-type: none;

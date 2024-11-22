@@ -23,14 +23,17 @@
         </nav>
 
         <ul class="button-logsign">
-            <li>
-                <button id="modal-inicio-open" href="" class="button-logsign-login btn">
+            <li id="login-buttons">
+                <button id="modal-inicio-open" class="button-logsign-login btn">
                     ENTRAR
                 </button>
-            </li>
-            <li>
                 <button id="modal-registro-open" class="button-logsign-signup btn">
                     REGISTRARSE
+                </button>
+            </li>
+            <li id="user-icon" style="display: none;">
+                <button class="user-icon-btn btn">
+                    <span id="user-initials" class="user-icon-initials"></span>
                 </button>
             </li>
         </ul>
@@ -127,10 +130,13 @@
             <button type="submit">Iniciar Sesión</button>
         </form>
     </dialog>
-
+    
+    <script src="../Scripts/user-status.js"></script>
     <script src="../Scripts/citas.js"></script>
     <script src="../Scripts/modal.js"></script>
     <script src="../Scripts/fecha-nacimiento.js"></script>
+
+
     
 </body>
 </html>
