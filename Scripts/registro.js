@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             // Llamar al API
-            const response = await fetch("http://localhost:5000/api/Usuarios/CrearUsuario", {
+            const response = await fetch("http://localhost:5154/api/Usuarios/CrearUsuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
