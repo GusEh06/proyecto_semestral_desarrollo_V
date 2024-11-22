@@ -4,19 +4,26 @@ document.addEventListener("DOMContentLoaded", () => {
     loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        // Capturar los datos del formulario
-        const contacto = document.querySelector("#nombre").value || "string"; // Valor predeterminado
-        const contraseña = document.querySelector("#datapicker").value || "string"; // Valor predeterminado
+               // Capturar los datos del formulario
+               const contacto = document.querySelector("#nombre").value || "string"; // Valor predeterminado
+               const contraseña = document.querySelector("#datapicker").value || "string"; // Valor predeterminado
 
+        // Validar si los campos están vacíos
         if (!contacto || !contraseña) {
             alert("Por favor ingresa ambos campos: Correo o Cédula y Contraseña.");
             return;
         }
 
-        // Construir el objeto para enviar con valores predeterminados
+        // Log para verificar los datos
+        console.log("Datos a enviar:", {
+            contacto,
+            contraseña
+        });
+
+        // Crear objeto con los datos a enviar
         const data = {
             usuario_id: 0, // Valor predeterminado
-            nombre:"0",
+            nombre: "0",
             sexo: "0", // Valor predeterminado
             edad: 0, // Valor predeterminado
             contacto: contacto, // Correo del usuario
@@ -24,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            // Llamar al API de login
+            // Realizar la solicitud fetch
             const response = await fetch("http://localhost:5154/api/Usuarios/login", {
                 method: "POST",
                 headers: {
@@ -38,14 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Guardar el token en localStorage
                 localStorage.setItem("userToken", token);
 
-                // Obtener el nombre del usuario a partir del token o del backend
-                const userNameResponse = await fetch(`http://localhost:5154/api/Usuarios/validate?token=${token}`);
-                const { contacto: userName } = await userNameResponse.json();
-                localStorage.setItem("userName", userName);
-
+                // Actualizar la UI o realizar otros pasos
                 alert("Inicio de sesión exitoso!");
-                document.querySelector("#close-modal-inicio-btn").click();
-                checkLoginStatus(); // Actualizar la UI
             } else {
                 const errorMessage = await response.text();
                 alert(`Error al iniciar sesión: ${errorMessage}`);
