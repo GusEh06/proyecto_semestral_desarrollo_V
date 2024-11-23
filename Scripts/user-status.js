@@ -1,57 +1,39 @@
-// Elementos del DOM
-const loginButtons = document.getElementById("login-buttons"); // Contenedor de los botones ENTRAR y REGISTRARSE
-const userIcon = document.getElementById("user-icon"); // Contenedor del ícono del usuario
-const userInitials = document.getElementById("user-initials"); // Elemento donde se mostrarán las iniciales
+document.addEventListener("DOMContentLoaded", () => {
+    const loginButtons = document.getElementById("login-buttons");
+    const userIcon = document.getElementById("user-icon");
+    const userInitials = document.getElementById("user-initials");
 
-// Simulación de inicio de sesión (puedes reemplazar estas funciones con tus procesos reales)
-function loginUser(token, name) {
-    // Guarda el token y el nombre en localStorage
-    localStorage.setItem("userToken", token);
-    localStorage.setItem("userName", name);
-
-    // Actualiza el estado visual
-    checkLoginStatus();
-}
-
-function logoutUser() {
-    // Eliminar datos de sesión
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("userName");
-
-    // Actualiza el estado visual
-    checkLoginStatus();
-}
-
-// Validar sesión y actualizar el estado de la UI
-function checkLoginStatus() {
-    const token = localStorage.getItem("userToken");
-    const name = localStorage.getItem("userName");
-
-    if (token && name) {
-        // Ocultar botones de inicio/registro
-        loginButtons.classList.add("hidden");
-
-        // Mostrar el ícono con las iniciales
-        const initials = name
-            .split(" ")
-            .map(word => word[0])
-            .join("")
-            .slice(0, 2)
-            .toUpperCase();
-        userInitials.textContent = initials;
-        userIcon.style.display = "flex";
-    } else {
-        // Mostrar botones de inicio/registro
-        loginButtons.classList.remove("hidden");
-
-        // Ocultar ícono del usuario
-        userIcon.style.display = "none";
+    // Verifica que los elementos existan antes de intentar manipularlos
+    if (!loginButtons || !userIcon || !userInitials) {
+        console.error("No se encontraron los elementos necesarios en el DOM.");
+        return; // Salir de la función si no se encuentran los elementos
     }
-}
 
-// Llamar la función en el inicio de la página
-checkLoginStatus();
+    function checkLoginStatus() {
+        const token = localStorage.getItem("userToken");
+        const name = localStorage.getItem("userName");
 
-// Ejemplo de cómo iniciar sesión manualmente para pruebas
-//loginUser("fakeToken123", "María Pérez"); // Prueba con este nombre
-//logoutUser(); // Prueba para cerrar sesión
+        if (token && name) {
+            // Ocultar botones de inicio/registro
+            loginButtons.classList.add("hidden");
+
+            const initials = name
+                .split(" ")
+                .map(word => word[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase();
+            userInitials.textContent = initials;
+
+            // Mostrar el ícono con iniciales del usuario
+            userIcon.style.display = "flex";
+        } else {
+            // Mostrar botones de inicio/registro
+            loginButtons.classList.remove("hidden");
+            userIcon.style.display = "none";
+        }
+    }
+
+    // Llamar al cargar la página para verificar el estado del login
+    checkLoginStatus();
+});

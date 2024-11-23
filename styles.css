@@ -22,6 +22,7 @@ input, button, textarea, select {
 }
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+  color: #36454F;
 }
 ol, ul {
   list-style: none;
@@ -45,6 +46,11 @@ ol, ul {
   }
 }
 
+hr {
+  border: 0.5px solid #C0C0C0; /* Color y grosor */
+  margin: 1px 0; /* Espaciado */
+  width: 80%; /* Longitud */
+}
 
 
 /*Estilos Genéricos*/
@@ -170,11 +176,9 @@ header{
 }
 
 .hidden {
-  visibility: hidden;
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
+  display: none;
 }
+
 
 
 .navbar-btn-sections, .navbar-btn-logsign {
@@ -557,7 +561,7 @@ dialog {
   }
 
   .modal-form input,
-  .modal-form select {
+  .modal-form select, .agendar-citas select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -566,7 +570,7 @@ dialog {
   }
 
   .modal-form input:focus,
-  .modal-form select:focus {
+  .modal-form select:focus, .agendar-citas select:focus {
     border-color: #AE445A;
     outline: none;
   }
@@ -761,4 +765,264 @@ select option {
 
 .citas-btn:hover {
   background-color: #d26274;
+}
+
+
+/*AGENDAR CITAS*/
+.agendar-citas{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 91.5vh;
+  width: 100%;
+
+  .agendar-citas-box{
+    padding: 0 20px 0 20px;
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    justify-content: center;
+    align-items: flex-start;
+    height: 85%;
+    width: 55%;
+    gap: 12px;
+    border-radius: 25px;
+    background-color: transparent;
+    backdrop-filter: blur(50px); /* Efecto de desenfoque */
+    -webkit-box-shadow: 2px 2px 18px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 18px -5px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 18px -5px rgba(0,0,0,0.75);
+
+    .agendar-citas-box-c{
+      height: 45em;
+      width: 31.6em;
+      display: flex;
+      flex-direction: column;
+      align-items:center;
+
+      .agendar-citas-box-1-e{
+        width: 98%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .agendar-citas-box-2-e{
+        height: 24.5%;
+        width: 98%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.agendar-citas-box-2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .agendar-citas-box-2-lista-doctor{
+    border-radius: 25px;
+    /* -webkit-box-shadow: inset 2px 3px 6px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 2px 3px 6px 3px rgba(0,0,0,0.75);
+    box-shadow: inset 2px 3px 6px 3px rgba(0,0,0,0.75); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .hour-button{
+      width: 150px;
+    }
+  }
+}
+
+.agendar-citas-box-1-hospital, .agendar-citas-box-1-especialidad{
+  height: 16%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  select{
+    width: 50%;
+  }
+}
+
+.agendar-citas-box-1-hospital-hora{
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  .agendar-citas-box-1-Hora-text-d{
+    width: 98%;
+    display: flex;
+    p{
+      margin-left: 18px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Botonera general */
+.button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 12px; /* Espaciado ajustado */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Botones generales */
+.day-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px; /* Ligera ampliación */
+  border: 2px solid #AE445A; /* Borde rojo */
+  background-color: #ffffff;
+  color: #AE445A; /* Texto rojo */
+  font-size: 14px; /* Tamaño del texto del día ligeramente mayor */
+  border-radius: 40%;
+  width: 37px; /* Ampliado un 10% */
+  height: 65px; /* Ampliado un 10% */
+  font-weight: 700;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover y selección */
+.day-button:hover, .day-button:focus {
+  background-color: #AE445A; /* Relleno rojo */
+  color: #f7edff; /* Texto blanco */
+}
+
+/* Texto del día */
+.day {
+  font-size: 15px; /* Ligeramente más grande */
+  font-weight: bold;
+}
+
+/* Círculo de la fecha */
+.date {
+  margin-top: 6px;
+  width: 25px; /* Ampliado un 10% */
+  height: 25px; /* Ampliado un 10% */
+  border-radius: 50%;
+  background-color: #fff; /* Relleno blanco */
+  color: #AE445A; /* Texto rojo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px; /* Número más grande */
+}
+
+/*BOTONES HORA*/
+/* Contenedor general */
+.hour-button-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  grid-template-rows: repeat(4, auto); /* 4 filas */
+  gap: 8px; /* Espaciado reducido */
+  justify-items: center;
+  align-items: center;
+  padding: 15px;
+}
+
+/* Botones */
+.hour-button {
+  padding: 8px 10px; /* Más pequeños */
+  font-size: 12px; /* Texto reducido */
+  font-weight: bold;
+  text-align: center;
+  color: #AE445A; /* Texto rojo */
+  border: 2px solid #AE445A; /* Borde rojo */
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 5px; /* Esquinas suaves */
+  width: 90px; /* Más angosto */
+  height: 35px; /* Más bajo */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover y selección */
+.hour-button:hover, .hour-button:focus {
+  background-color: #AE445A; /* Fondo rojo */
+  color: #f7edff; /* Texto blanco */
+}
+
+
+
+
+/*FOOTER*/
+.contain-footer{
+  display: flex;
+  flex-direction: column;
+  background-color: #af465c;
+}
+
+.copyright{
+  background-color: #af465c;
+  p{
+    margin: 0%;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+}
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 22.5vh;
+  background-color: #af465c;
+  .footer-navigator{
+    .footer-navigator-urls{
+      display: flex;
+      flex-direction: column;
+      gap: 7.5px;
+      li a {
+        text-decoration: none;  /* Quita el subrayado */
+        color: #FFFFFF;         /* Hereda el color del elemento padre */
+      }
+      
+    }
+  }
+  .footer-social-media{
+    display: flex;
+    .footer-social-media-urls{
+      display: flex;
+      width: 11em;
+      height: auto;
+      justify-content: space-around;
+      align-items: center;
+      gap: 15px;
+      margin-right: 250px;
+      li a img{
+        width: 11em;
+        height: auto;
+        fill: white;
+      }
+    }
+
+  }
+  .footer-information{
+    display: flex;
+    ul{
+      list-style-type: none; /* Quita los puntos de la lista */
+      padding: 0; /* Elimina el espacio extra */
+      color: #FFFFFF; 
+    }
+  }
 }

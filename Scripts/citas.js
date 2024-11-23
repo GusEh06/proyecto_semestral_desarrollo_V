@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleccionar los elementos del DOM
     const btnAgendarCita = document.getElementById("btn-agendar-cita");
     const btnVerCitas = document.getElementById("btn-ver-citas");
     const modalInicio = document.getElementById("modal-inicio");
+    const userIconBtn = document.querySelector(".user-icon-btn");
+    const userInitials = document.getElementById("user-initials");
 
-    // URL de la API para validar sesión
-    const validateTokenUrl = "api/Usuarios/validate";
+    const validateTokenUrl = "http://localhost:5154/api/Usuarios/validate";
+    let sessionToken = localStorage.getItem("userToken");
+    
 
-    // Token de sesión almacenado (en una aplicación real se guardaría en cookies o localStorage)
-    let sessionToken = null;
-
-    // Función para validar la sesión
     async function validarSesion() {
+        
         if (!sessionToken) {
+            console.warn("No se encontró token de sesión");
             return false;
         }
-
+        
         try {
             const response = await fetch(`${validateTokenUrl}?token=${sessionToken}`);
             if (response.ok) {
@@ -32,24 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Función para manejar las acciones de los botones
     async function manejarBoton(action) {
         const sesionValida = await validarSesion();
-
         if (sesionValida) {
-            // Redirigir según la acción
             if (action === "agendar") {
                 window.location.href = "agendar-citas.html";
             } else if (action === "ver") {
                 window.location.href = "ver-citas.html";
             }
         } else {
-            // Mostrar el modal de inicio de sesión si la sesión no es válida
             modalInicio.showModal();
         }
     }
 
-    // Asignar eventos a los botones solo si existen
     if (btnAgendarCita) {
         btnAgendarCita.addEventListener("click", () => manejarBoton("agendar"));
     }
@@ -58,22 +53,37 @@ document.addEventListener('DOMContentLoaded', () => {
         btnVerCitas.addEventListener("click", () => manejarBoton("ver"));
     }
 
-    // Seleccionar el botón de cerrar del modal
-    const closeModalInicioBtn = document.getElementById("close-modal-inicio-btn");
+    // Función de logout
+    function logoutUser() {
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("userName");
+        window.location.reload();
+    }
 
+    if (userIconBtn) {
+        userIconBtn.addEventListener('click', logoutUser);
+    }
+
+    const closeModalInicioBtn = document.getElementById("close-modal-inicio-btn");
     if (closeModalInicioBtn) {
-        // Cerrar el modal al hacer clic en la 'X'
         closeModalInicioBtn.addEventListener("click", () => {
             modalInicio.close();
         });
     }
 
     if (modalInicio) {
-        // Cerrar el modal al hacer clic fuera de él
         modalInicio.addEventListener("click", (e) => {
             if (e.target === modalInicio) {
                 modalInicio.close();
             }
         });
     }
+
+
+    const userName = localStorage.getItem("userName");
+    if (userName) {
+        const initials = userName.split(" ").map(word => word[0]).join("").slice(0, 2).toUpperCase();
+        userInitials.textContent = initials;
+    }
+    console.log("Token almacenado:", sessionToken);  // Depuración
 });
