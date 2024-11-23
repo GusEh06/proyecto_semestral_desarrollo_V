@@ -1,51 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#modal-inicio form");
+    const loginModal = document.getElementById("modal-inicio"); // Selecciona el modal
 
     loginForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-               // Capturar los datos del formulario
-               const contacto = document.querySelector("#nombre").value || "string"; // Valor predeterminado
-               const contraseña = document.querySelector("#datapicker").value || "string"; // Valor predeterminado
+        const contacto = document.querySelector("#contacto").value || "string";
+        const contraseña = document.querySelector("#datapicker").value || "string";
 
-        // Validar si los campos están vacíos
         if (!contacto || !contraseña) {
             alert("Por favor ingresa ambos campos: Correo o Cédula y Contraseña.");
             return;
         }
 
-        // Log para verificar los datos
-        console.log("Datos a enviar:", {
-            contacto,
-            contraseña
-        });
+        console.log("Datos enviados al servidor:", { contacto, contraseña });
 
-        // Crear objeto con los datos a enviar
         const data = {
-            usuario_id: 0, // Valor predeterminado
+            usuario_id: 0,
             nombre: "0",
-            sexo: "0", // Valor predeterminado
-            edad: 0, // Valor predeterminado
-            contacto: contacto, // Correo del usuario
-            contraseña: contraseña // Contraseña del usuario
+            sexo: "0",
+            edad: 0,
+            contacto,
+            contraseña,
         };
 
         try {
-            // Realizar la solicitud fetch
             const response = await fetch("http://localhost:5154/api/Usuarios/login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify(data) // Enviar los datos con valores predeterminados
+                body: JSON.stringify(data),
             });
 
             if (response.ok) {
-                const { token } = await response.json();
-                // Guardar el token en localStorage
+                const { token, name } = await response.json();
                 localStorage.setItem("userToken", token);
+                localStorage.setItem("userName", name);
 
-                // Actualizar la UI o realizar otros pasos
+                checkLoginStatus(); // Actualiza la UI
+
+                loginModal.close(); // Cierra el modal
                 alert("Inicio de sesión exitoso!");
             } else {
                 const errorMessage = await response.text();

@@ -1,58 +1,143 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.querySelector("#modal-inicio form");
-
-    loginForm.addEventListener("submit", async (event) => {
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("#modal-registro form");
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
-
         // Capturar los datos del formulario
-        const contacto = document.querySelector("#nombre").value || "string"; // Valor predeterminado
-        const contraseña = document.querySelector("#datapicker").value || "string"; // Valor predeterminado
-
-        if (!contacto || !contraseña) {
-            alert("Por favor ingresa ambos campos: Correo o Cédula y Contraseña.");
+        const nombre = document.querySelector("#nombre").value;
+        const apellido = document.querySelector("#apellido").value;
+        const cedula = document.querySelector("#cedula").value;
+        const telefono = document.querySelector("#telefono").value;
+        const correo = document.querySelector("#correo").value;
+        const sexo = document.querySelector("#sexo").value;
+        const dia = document.querySelector("#dia").value;
+        const mes = document.querySelector("#mes").value;
+        const anio = document.querySelector("#anio").value;
+        const password = document.querySelector("#password").value;
+        const confirmPassword = document.querySelector("#confirm-password").value;
+        // Validar que las contraseñas coincidan
+        if (password !== confirmPassword) {
+            alert("Las contraseñas no coinciden.");
             return;
-        }
-
-        // Construir el objeto para enviar con valores predeterminados
+        }document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("#modal-registro form");
+        
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+        
+                // Capturar los datos del formulario
+                const nombre = document.querySelector("#nombre").value;
+                const apellido = document.querySelector("#apellido").value;
+                const cedula = document.querySelector("#cedula").value;
+                const telefono = document.querySelector("#telefono").value;
+                const correo = document.querySelector("#correo").value;
+                const sexo = document.querySelector("#sexo").value;
+                const dia = document.querySelector("#dia").value;
+                const mes = document.querySelector("#mes").value;
+                const anio = document.querySelector("#anio").value;
+                const password = document.querySelector("#password").value;
+                const confirmPassword = document.querySelector("#confirm-password").value;
+        
+                // Validar que las contraseñas coincidan
+                if (password !== confirmPassword) {
+                    alert("Las contraseñas no coinciden.");
+                    return;
+                }
+        
+                // Validar campos obligatorios
+                if (!nombre || !apellido || !cedula || !telefono || !correo || !sexo || !dia || !mes || !anio || !password) {
+                    alert("Por favor, completa todos los campos.");
+                    return;
+                }
+        
+                // Crear el objeto para enviar
+                const data = {
+                    usuario_id: 0,
+                    nombre: `${nombre} ${apellido}`,
+                    sexo: sexo === "1" ? "Masculino" : "Femenino",
+                    edad: calcularEdad(`${anio}-${mes}-${dia}`),
+                    contacto: correo,
+                    contraseña: password
+                };
+        
+                try {
+                    // Llamar al API
+                    const response = await fetch("http://localhost:5154/api/Usuarios/CrearUsuario", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    });
+        
+                    if (response.ok) {
+                        const result = await response.json();
+                        alert("Registro exitoso. ¡Bienvenido!");
+                        form.reset();
+                        document.querySelector("#close-modal-registro-btn").click();
+                    } else {
+                        const error = await response.text();
+                        alert(`Error al registrar: ${error}`);
+                    }
+                } catch (error) {
+                    console.error("Error al llamar al API:", error);
+                    alert("Ocurrió un error al procesar tu registro.");
+                }
+            });
+        
+            // Función para calcular la edad
+            function calcularEdad(fechaNacimiento) {
+                const hoy = new Date();
+                const fechaNac = new Date(fechaNacimiento);
+                let edad = hoy.getFullYear() - fechaNac.getFullYear();
+                const mes = hoy.getMonth() - fechaNac.getMonth();
+                if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+                    edad--;
+                }
+                return edad;
+            }
+        });
+        
+        // Crear el objeto para enviar
         const data = {
-            usuario_id: 0, // Valor predeterminado
-            nombre:"0",
-            sexo: "0", // Valor predeterminado
-            edad: 0, // Valor predeterminado
-            contacto: contacto, // Correo del usuario
-            contraseña: contraseña // Contraseña del usuario
+            usuario_id: 0,
+            nombre: `${nombre} ${apellido}`,
+            sexo: sexo === "1" ? "Masculino" : "Femenino",
+            edad: calcularEdad(`${anio}-${mes}-${dia}`),
+            contacto: correo,
+            contraseña: password
         };
-
         try {
-            // Llamar al API de login
-            const response = await fetch("http://localhost:5154/api/Usuarios/login", {
+            // Llamar al API
+            const response = await fetch("http://localhost:5000/api/Usuarios/CrearUsuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data) // Enviar los datos con valores predeterminados
+                body: JSON.stringify(data)
             });
-
             if (response.ok) {
-                const { token } = await response.json();
-                // Guardar el token en localStorage
-                localStorage.setItem("userToken", token);
-
-                // Obtener el nombre del usuario a partir del token o del backend
-                const userNameResponse = await fetch(`http://localhost:5154/api/Usuarios/validate?token=${token}`);
-                const { contacto: userName } = await userNameResponse.json();
-                localStorage.setItem("userName", userName);
-
-                alert("Inicio de sesión exitoso!");
-                document.querySelector("#close-modal-inicio-btn").click();
-                checkLoginStatus(); // Actualizar la UI
+                const result = await response.json();
+                alert("Registro exitoso. ¡Bienvenido!");
+                form.reset();
+                document.querySelector("#close-modal-registro-btn").click();
             } else {
-                const errorMessage = await response.text();
-                alert(`Error al iniciar sesión: ${errorMessage}`);
+                const error = await response.text();
+                alert(`Error al registrar: ${error}`);
             }
         } catch (error) {
-            console.error("Error al iniciar sesión:", error);
-            alert("Error en el proceso de inicio de sesión.");
+            console.error("Error al llamar al API:", error);
+            alert("Ocurrió un error al procesar tu registro.");
         }
     });
+    // Función para calcular la edad
+    function calcularEdad(fechaNacimiento) {
+        const hoy = new Date();
+        const fechaNac = new Date(fechaNacimiento);
+        let edad = hoy.getFullYear() - fechaNac.getFullYear();
+        const mes = hoy.getMonth() - fechaNac.getMonth();
+        if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+            edad--;
+        }
+        return edad;
+    }
 });
