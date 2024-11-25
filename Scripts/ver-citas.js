@@ -46,10 +46,16 @@ function mostrarCitas(citas) {
     }
 
     const lista = document.createElement('ul');
-    citas.forEach(cita => {
+    citas.forEach((cita, index) => {
         const item = document.createElement('li');
         item.textContent = `Cita ID: ${cita.cita_id}, Fecha: ${cita.fecha}, Hora: ${cita.hora}, Estado: ${cita.estado}`;
         lista.appendChild(item);
+
+        // Crear <hr> después de cada <li>, pero no después del último
+        const hr = document.createElement('hr');
+        if (index < citas.length - 1) {  // Solo agrega <hr> si no es el último elemento
+            lista.appendChild(hr);
+        }
     });
 
     citasDiv.appendChild(lista);

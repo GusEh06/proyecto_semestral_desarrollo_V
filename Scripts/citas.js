@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem("userToken");
         localStorage.removeItem("userName");
         window.location.reload();
+        window.location.href = "/pages/citas.html";
     }
 
     if (userIconBtn) {

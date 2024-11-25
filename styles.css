@@ -27,6 +27,9 @@ p, h1, h2, h3, h4, h5, h6 {
 ol, ul {
   list-style: none;
 }
+div {
+  color: #36454F;
+}
 :not([class]) {
   h1&, h2&, h3&, h4&, h5&, h6& {
     margin-block: 0.75em;
@@ -106,8 +109,9 @@ header{
   background-color: #FFFFFF;
   justify-content: space-between;
   height: 8.5vh;
-  width: 100vw;
+  width: 100%;
   box-shadow: 0px 4px 9px -4px rgba(0, 0, 0, 0.75);
+  padding: 0 5px;
   a{
     display: flex;
 
@@ -117,7 +121,14 @@ header{
     }
   }
 
-
+.sect-right{
+  display: flex;
+  flex-direction: row;
+  a img {
+    margin: 0 20px;
+    width: 30px;
+  }
+}
 
   /*NavBar*/
   .navbar {
@@ -141,7 +152,6 @@ header{
 
     .button-logsign-signup {
         border: 2.5px solid #AE445A;
-        margin-right: 15px;
     }
 
   }
@@ -777,12 +787,11 @@ select option {
   width: 100%;
 
   .agendar-citas-box{
-    padding: 0 20px 0 20px;
     display: flex;
     flex-direction: row;
     background-color: #FFFFFF;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     height: 85%;
     width: 55%;
     gap: 12px;
@@ -808,9 +817,12 @@ select option {
 
       .agendar-citas-box-2-e{
         height: 24.5%;
-        width: 98%;
+        width: 90%;
         display: flex;
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
+
       }
     }
   }
@@ -823,10 +835,10 @@ select option {
   justify-content: center;
 
   .agendar-citas-box-2-lista-doctor{
+    -webkit-box-shadow: inset 1px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 1px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: inset 1px 1px 5px 0px rgba(0,0,0,0.75);
     border-radius: 25px;
-    /* -webkit-box-shadow: inset 2px 3px 6px 3px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 2px 3px 6px 3px rgba(0,0,0,0.75);
-    box-shadow: inset 2px 3px 6px 3px rgba(0,0,0,0.75); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -836,8 +848,25 @@ select option {
   }
 }
 
+.agendar-citas-box-1{
+  .agendar-citas-box-1-fecha{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    .agendar-citas-box-1-fecha-text-d{
+      width: 98%;
+      display: flex;
+      p{
+        margin-left: 18px;
+      }
+    }
+  }
+}
+
 .agendar-citas-box-1-hospital, .agendar-citas-box-1-especialidad{
-  height: 16%;
+  height: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -964,6 +993,45 @@ select option {
 
 
 
+
+/*VER CITAS*/
+.contain-ver-citas{
+  height: 91.5vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(254,251,252,1) 25%, rgba(253,249,250,1) 72%, rgba(240,221,225,1) 81%, rgba(226,188,196,1) 86%, rgba(219,171,181,1) 90%, rgba(200,128,143,1) 95%, rgba(174,68,90,1) 100%);
+  
+  .ver-citas-usuario{
+    display:flex;
+    height: 45em;
+    width: 40em;
+    backdrop-filter: blur(50px);
+    box-shadow: 2px 2px 18px -5px rgba(0, 0, 0, 0.75);
+    border-radius: 25px;
+    padding: 25px 30px;
+    ul{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      list-style-type: none;
+      width: 100%;
+      padding: 0;
+      hr{
+        margin: 12px 0;
+      }
+    }
+  }
+}
+
+
+
+
+
+
 /*FOOTER*/
 .contain-footer{
   display: flex;
@@ -1017,6 +1085,7 @@ select option {
     }
 
   }
+
   .footer-information{
     display: flex;
     ul{
@@ -1025,4 +1094,95 @@ select option {
       color: #FFFFFF; 
     }
   }
+}
+
+.hour-button{
+  div {
+    color: #432E54;
+  }
+}
+
+button.active {
+  background-color: #AE445A; /* Fondo rojo */
+  color: #f7edff; /* Texto blanco */
+}
+
+/* Botones Doctor */
+.doctor-button {
+  padding: 8px 10px; /* Más pequeños */
+  font-size: 12px; /* Texto reducido */
+  font-weight: bold;
+  text-align: center;
+  color: #AE445A; /* Texto rojo */
+  border: 2px solid #AE445A; /* Borde rojo */
+  background-color: #fff; 
+  border-radius: 5px; 
+  width: 175px; 
+  height: 35px; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover y selección Doctor */
+.doctor-button:hover, .doctor-button:focus {
+  background-color: #AE445A; 
+  color: #f7edff; 
+}
+
+.btn-agendar-cita {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #AE445A; /* Texto rojo */
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 5px;
+  font-weight: 700;
+  border: 2px solid #AE445A;
+}
+
+.btn-agendar-cita:hover {
+  background: #AE445A; /* Fondo rojo al hacer hover */
+  color: #fff; /* Texto blanco */
+  border: 2px solid #AE445A;
+}
+
+.select-h-e {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.select-h-e:focus {
+  border-color: #AE445A;
+  outline: none;
+}
+
+/* Estilo inicial para la letra "J" */
+.day-button .day {
+  color: #AE445A; /* Color rojo inicial */
+}
+
+/* Estilo cuando el botón está seleccionado */
+.day-button.active .day {
+  color: #fff; /* Color blanco cuando está seleccionado */
+}
+
+/* Estilo para el botón cuando está seleccionado */
+.day-button.active {
+  background-color: #AE445A; /* Fondo rojo */
+  color: #fff; /* Texto blanco */
+  border-color: #AE445A; /* Borde rojo */
+}
+
+/* Estilo cuando el mouse pasa por encima del botón */
+.day-button:hover .day {
+  color: #fff; /* Texto blanco cuando se hace hover en todo el botón */
+}
+
+/* Estilo cuando el botón está seleccionado y el mouse está sobre él */
+.day-button.active:hover .day {
+  color: #fff; /* Texto blanco cuando el botón está seleccionado y se hace hover */
 }
