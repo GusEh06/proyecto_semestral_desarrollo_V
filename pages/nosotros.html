@@ -18,22 +18,27 @@
             <ul class="navbar-btn-sections">
                 <li><a href="../index.html" class="btn">INICIO</a></li>
                 <li><a href="#" class="btn">NOSOTROS</a></li>
-                <li><a href="citas.html" class="btn">CITAS</a></li>
+                <li><a href="/pages/citas.html" class="btn">CITAS</a></li>
             </ul>
         </nav>
-
-        <ul class="button-logsign">
-            <li>
-                <button id="modal-inicio-open" href="" class="button-logsign-login btn">
-                    ENTRAR
-                </button>
-            </li>
-            <li>
-                <button id="modal-registro-open" class="button-logsign-signup btn">
-                    REGISTRARSE
-                </button>
-            </li>
-        </ul>
+        <div class="sect-right">
+            <a href="https://www.google.com/"><img src="../imagenes/icons8-search.svg" alt="google"></a>
+            <ul class="button-logsign">
+                <li id="login-buttons">
+                    <button id="modal-inicio-open" class="button-logsign-login btn">
+                        ENTRAR
+                    </button>
+                    <button id="modal-registro-open" class="button-logsign-signup btn">
+                        REGISTRARSE
+                    </button>
+                </li>
+                <li id="user-icon" style="display: none;">
+                    <button class="user-icon-btn btn">
+                        <span id="user-initials" class="user-icon-initials"></span>
+                    </button>
+                </li>
+            </ul>
+        </div>
     </header>
 
     <!--Nosotros-->
@@ -59,11 +64,16 @@
             </div>
             <div class="nosotros-contenedor-caja">
                 <h3>Diego Torres</h3> 
-                <img src="../imagenes/eldiego.jpeg" alt="Imagen 3">
+                <img src="../imagenes/Diego.jpeg" alt="Imagen 3">
+                <p>Soy Diego torres, con número de cédula 8-989-920, estudiante de Licenciatura en Desarrollo y Gestión de Software, 
+                    apasionado por la programación y el desarrollo de soluciones innovadoras. Me gusta explorar y aprender nuevos 
+                    lenguajes y tecnologías, con experiencia en Java y C#, y siempre buscando ampliar mis habilidades.
+                </p>
             </div>
             <div class="nosotros-contenedor-caja">
                 <h3>Gustavo Sánchez</h3> 
-                <img src="imagenes/.png" alt="Imagen 4">
+                <img src="#" alt="Imagen 4">
+                
             </div>
         </div>
     </div>
@@ -74,7 +84,7 @@
             <h2>Registro de Nuevo Paciente</h2>
             <button id="close-modal-registro-btn">&times;</button>
         </div>
-        <form id="contact-form" class="modal-form">
+        <form id="contact-form-registro" class="modal-form">
             <!-- Datos personales -->
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu Nombre" required maxlength="20">
@@ -132,70 +142,71 @@
     
 
     <!-- Este es el Modal para que los Pacientes Inicien Sesión -->
-    <dialog id="modal-inicio">
-        <div class="modal-header">
-            <h2>Inicia Sesión</h2>
-            <button id="close-modal-inicio-btn">&times;</button>
-        </div>
-        <form id="contact-form" class="modal-form">
-            <!-- Datos personales -->
-            <label for="user">Correo o Cédula:</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu Correo o Cédula" required>        
-    
-            <!-- Contraseña -->
-            <label for="password">Contraseña:</label>
-            <input type="password" id="datapicker" class="form-control" name="password" placeholder="Ingresa tu Contraseña" required>
-    
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-    </dialog>
-    
-    <footer class="contair-footer">
-        <div class="footer">
-            <div class="footer-information">
-                <ul>
-                    <li>Recuerda llegar 10 minutos antes de tu cita.</li>
-                    <li>Con la plataforma puedes evitar largas filas.</li>
-                    <li>Trae tu identificación y documentos médicos.</li>
-                    <li>Infórmanos si necesitas cambiar tu cita.</li>
-                    <li>Verifica tu doctor antes de salir.</li>
-                  </ul>
-            </div>
-            <div class="footer-social-media">
-                <ul class="footer-social-media-urls">
-                    <li>
-                        <a href="https://www.facebook.com/?locale=es_LA" class="footer-information-url">
-                            <img src="../imagenes/icons8-facebook.svg" alt="Facebook">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/" class="footer-information-url">
-                            <img src="../imagenes/icons8-instagram.svg" alt="Instagram">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/?lang=es" class="footer-information-url">
-                            <img src="../imagenes/icons8-twitter.svg" alt="X">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-navigator">
-                <ul class="footer-navigator-urls">
-                    <li><a href="../index.html" class="footer-information-url">INICIO</a></li>
-                    <li><a href="nosotros.html" class="footer-information-url">NOSOTROS</a></li>
-                    <li><a href="citas.html" class="footer-information-url">CITAS</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 Medify. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+<dialog id="modal-inicio">
+    <div class="modal-header">
+        <h2>Inicia Sesión</h2>
+        <button id="close-modal-inicio-btn">&times;</button>
+    </div>
+    <form id="contact-form-inicio" class="modal-form">
+        <!-- Datos personales -->
+        <label for="nombre">Correo o Cédula:</label>
+        <input type="text" id="contacto" name="nombre" placeholder="Ingresa tu Correo o Cédula" required>        
 
-    <script src="../Scripts/modal.js"></script>
-    <script src="../Scripts/fecha-nacimiento.js"></script>
-    <script src="../Scripts/user-status.js"></script>
-    <script src="../Scripts/citas.js"></script>
+        <!-- Contraseña -->
+        <label for="datapicker">Contraseña:</label>
+        <input type="password" id="datapicker" class="form-control" name="password" placeholder="Ingresa tu Contraseña" required>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</dialog>
+
+<footer class="contair-footer">
+    <div class="footer">
+        <div class="footer-information">
+            <ul>
+                <li>Recuerda llegar 10 minutos antes de tu cita.</li>
+                <li>Con la plataforma puedes evitar largas filas.</li>
+                <li>Trae tu identificación y documentos médicos.</li>
+                <li>Infórmanos si necesitas cambiar tu cita.</li>
+                <li>Verifica tu doctor antes de salir.</li>
+              </ul>
+        </div>
+        <div class="footer-social-media">
+            <ul class="footer-social-media-urls">
+                <li>
+                    <a href="https://www.facebook.com/?locale=es_LA" class="footer-information-url">
+                        <img src="../imagenes/icons8-facebook.svg" alt="Facebook">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/" class="footer-information-url">
+                        <img src="../imagenes/icons8-instagram.svg" alt="Instagram">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/?lang=es" class="footer-information-url">
+                        <img src="../imagenes/icons8-twitter.svg" alt="X">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-navigator">
+            <ul class="footer-navigator-urls">
+                <li><a href="../index.html" class="footer-information-url">INICIO</a></li>
+                <li><a href="/pages/nosotros.html" class="footer-information-url">NOSOTROS</a></li>
+                <li><a href="/pages/citas.html" class="footer-information-url">CITAS</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 Medify. Todos los derechos reservados.</p>
+    </div>
+</footer>
+    
+<script src="../Scripts/user-status.js"></script>
+<script src="../Scripts/citas.js"></script>
+<script src="../Scripts/modal.js"></script>
+<script src="../Scripts/fecha-nacimiento.js"></script>
+<script src="../Scripts/login.js"></script>
 </body>
 </html>

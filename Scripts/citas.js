@@ -1,26 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleccionar los elementos del DOM
     const btnAgendarCita = document.getElementById("btn-agendar-cita");
     const btnVerCitas = document.getElementById("btn-ver-citas");
     const modalInicio = document.getElementById("modal-inicio");
-    const userIconBtn = document.querySelector(".user-icon-btn"); // Botón para cerrar sesión
+    const userIconBtn = document.querySelector(".user-icon-btn");
     const userInitials = document.getElementById("user-initials");
 
-    // URL de la API para validar sesión
-    const validateTokenUrl = "api/Usuarios/validate";
+    const validateTokenUrl = "http://localhost:5154/api/Usuarios/validate";
+    let sessionToken = localStorage.getItem("userToken");
+    
 
-    // Token de sesión almacenado (en una aplicación real se guardaría en cookies o localStorage)
-    let sessionToken = localStorage.getItem("userToken"); // Tomar el token de localStorage
-
-    console.log("Token almacenado:", sessionToken);  // Depuración
-
-    // Función para validar la sesión
     async function validarSesion() {
+        
         if (!sessionToken) {
-            console.warn("No se encontró token de sesión");  // Depuración
+            console.warn("No se encontró token de sesión");
             return false;
         }
-
+        
         try {
             const response = await fetch(`${validateTokenUrl}?token=${sessionToken}`);
             if (response.ok) {
@@ -28,37 +23,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Sesión válida para:", data.contacto);
                 return true;
             } else {
-                console.warn("Sesión no válida: respuesta del servidor:", response.statusText);  // Depuración
+                console.warn("Sesión no válida");
                 return false;
             }
         } catch (error) {
-            console.error("Error al validar la sesión:", error);  // Depuración
+            console.error("Error al validar la sesión:", error);
             return false;
         }
     }
 
-    // Función para manejar las acciones de los botones
     async function manejarBoton(action) {
         const sesionValida = await validarSesion();
-        console.log("Sesión válida:", sesionValida);  // Depuración
-
         if (sesionValida) {
-            // Redirigir según la acción
             if (action === "agendar") {
-                console.log("Redirigiendo a agendar-citas.html");  // Depuración
                 window.location.href = "agendar-citas.html";
             } else if (action === "ver") {
-                console.log("Redirigiendo a ver-citas.html");  // Depuración
                 window.location.href = "ver-citas.html";
             }
         } else {
-            console.log("Mostrando modal de inicio de sesión");  // Depuración
-            // Mostrar el modal de inicio de sesión si la sesión no es válida
             modalInicio.showModal();
         }
     }
 
-    // Asignar eventos a los botones solo si existen
     if (btnAgendarCita) {
         btnAgendarCita.addEventListener("click", () => manejarBoton("agendar"));
     }
@@ -67,36 +53,26 @@ document.addEventListener('DOMContentLoaded', () => {
         btnVerCitas.addEventListener("click", () => manejarBoton("ver"));
     }
 
-    // Función para cerrar sesión
+    // Función de logout
     function logoutUser() {
-        // Eliminar los datos del usuario del localStorage
         localStorage.removeItem("userToken");
         localStorage.removeItem("userName");
-
-        // Recargar la página para actualizar el estado de la sesión
         window.location.reload();
+        window.location.href = "/pages/citas.html";
     }
 
-    // Asignar la función logout al botón del ícono de usuario
     if (userIconBtn) {
-        userIconBtn.addEventListener('click', () => {
-            // Cerrar sesión al hacer clic en el ícono de usuario
-            logoutUser();
-        });
+        userIconBtn.addEventListener('click', logoutUser);
     }
 
-    // Seleccionar el botón de cerrar del modal
     const closeModalInicioBtn = document.getElementById("close-modal-inicio-btn");
-
     if (closeModalInicioBtn) {
-        // Cerrar el modal al hacer clic en la 'X'
         closeModalInicioBtn.addEventListener("click", () => {
             modalInicio.close();
         });
     }
 
     if (modalInicio) {
-        // Cerrar el modal al hacer clic fuera de él
         modalInicio.addEventListener("click", (e) => {
             if (e.target === modalInicio) {
                 modalInicio.close();
@@ -104,16 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Verificar si el usuario está logueado y mostrar las iniciales
+
     const userName = localStorage.getItem("userName");
     if (userName) {
-        // Mostrar las iniciales del usuario
-        const initials = userName
-            .split(" ")
-            .map(word => word[0])
-            .join("")
-            .slice(0, 2)
-            .toUpperCase();
+        const initials = userName.split(" ").map(word => word[0]).join("").slice(0, 2).toUpperCase();
         userInitials.textContent = initials;
     }
+    console.log("Token almacenado:", sessionToken);  // Depuración
 });

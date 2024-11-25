@@ -56,7 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     sexo: sexo === "1" ? "Masculino" : "Femenino",
                     edad: calcularEdad(`${anio}-${mes}-${dia}`),
                     contacto: correo,
-                    contraseña: password
+                    contraseña: password,
+                    cedula: cedula,
+                    celular: telefono
                 };
         
                 try {
@@ -104,11 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
             sexo: sexo === "1" ? "Masculino" : "Femenino",
             edad: calcularEdad(`${anio}-${mes}-${dia}`),
             contacto: correo,
-            contraseña: password
+            contraseña: password,
+            cedula: cedula,
+            celular: telefono
         };
         try {
             // Llamar al API
-            const response = await fetch("http://localhost:5000/api/Usuarios/CrearUsuario", {
+            const response = await fetch("http://localhost:5154/api/Usuarios/CrearUsuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

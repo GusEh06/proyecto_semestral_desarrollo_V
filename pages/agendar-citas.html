@@ -12,25 +12,28 @@
         <a href="../index.html">
             <img src="../imagenes/logo.svg" alt="Medify">
         </a>
-
+    
         <!-- NavBar -->
         <nav class="navbar">
             <ul class="navbar-btn-sections">
                 <li><a href="../index.html" class="btn">INICIO</a></li>
-                <li><a href="nosotros.html" class="btn">NOSOTROS</a></li>
-                <li><a href="#" class="btn">CITAS</a></li>
+                <li><a href="/pages/nosotros.html" class="btn">NOSOTROS</a></li>
+                <li><a href="/pages/citas.html" class="btn">CITAS</a></li>
             </ul>
         </nav>
-
+    
         <ul class="button-logsign">
-            <li>
-                <button id="modal-inicio-open" href="" class="button-logsign-login btn">
+            <li id="login-buttons">
+                <button id="modal-inicio-open" class="button-logsign-login btn">
                     ENTRAR
                 </button>
-            </li>
-            <li>
                 <button id="modal-registro-open" class="button-logsign-signup btn">
                     REGISTRARSE
+                </button>
+            </li>
+            <li id="user-icon" style="display: none;">
+                <button class="user-icon-btn btn">
+                    <span id="user-initials" class="user-icon-initials"></span>
                 </button>
             </li>
         </ul>
@@ -61,23 +64,23 @@
                         <p>Fecha de la Cita</p>
                     </div>
                     <div class="button-container">
-                        <button id="day-l" class="day-button" data-date="2024-11-25">
+                        <button id="day-l" class="day-button" data-date="2024-11-25" onclick="selectButton('day-button', this)">
                             <div class="day">L</div>
                             <div class="date" id="date-1">25</div>
                         </button>
-                        <button id="day-m" class="day-button" data-date="2024-11-26">
+                        <button id="day-m" class="day-button" data-date="2024-11-26" onclick="selectButton('day-button', this)">
                             <div class="day">M</div>
                             <div class="date" id="date-2">26</div>
                         </button>
-                        <button id="day-x" class="day-button" data-date="2024-11-27">
+                        <button id="day-x" class="day-button" data-date="2024-11-27" onclick="selectButton('day-button', this)">
                             <div class="day">X</div>
                             <div class="date" id="date-3">27</div>
                         </button>
-                        <button id="day-j" class="day-button" data-date="2024-11-28">
+                        <button id="day-j" class="day-button" data-date="2024-11-28" onclick="selectButton('day-button', this)">
                             <div class="day">J</div>
                             <div class="date" id="date-4">28</div>
                         </button>
-                        <button id="day-v" class="day-button" data-date="2024-11-29">
+                        <button id="day-v" class="day-button" data-date="2024-11-29" onclick="selectButton('day-button', this)">
                             <div class="day">V</div>
                             <div class="date" id="date-5">29</div>
                         </button>
@@ -92,23 +95,23 @@
                         <p>Hora de la Cita</p>
                     </div>
                     <div class="hour-button-container">
-                        <button id="hour-8" class="hour-button">08:00 AM</button>
-                        <button id="hour-8-3" class="hour-button">08:30 AM</button>
-                        <button id="hour-9" class="hour-button">09:00 AM</button>
-                        <button id="hour-9-3" class="hour-button">09:30 AM</button>
-                        <button id="hour-10" class="hour-button">10:00 AM</button>
-                        <button id="hour-10-3" class="hour-button">10:30 AM</button>
-                        <button id="hour-11" class="hour-button">11:00 AM</button>
-                        <button id="hour-11-3" class="hour-button">11:30 AM</button>
-                        <button id="hour-12" class="hour-button">12:00 PM</button>
-                        <button id="hour-12-3" class="hour-button">12:30 PM</button>
-                        <button id="hour-1" class="hour-button">13:00 PM</button>
-                        <button id="hour-1-3" class="hour-button">13:30 PM</button>
-                        <button id="hour-2" class="hour-button">14:00 PM</button>
-                        <button id="hour-2-3" class="hour-button">14:30 PM</button>
-                        <button id="hour-3" class="hour-button">15:00 PM</button>
-                        <button id="hour-3-3" class="hour-button">15:30 PM</button>
-                    </div>                 
+                        <button id="hour-8" class="hour-button" onclick="selectButton('hour-button', this)">08:00 AM</button>
+                        <button id="hour-8-3" class="hour-button" onclick="selectButton('hour-button', this)">08:30 AM</button>
+                        <button id="hour-9" class="hour-button" onclick="selectButton('hour-button', this)">09:00 AM</button>
+                        <button id="hour-9-3" class="hour-button" onclick="selectButton('hour-button', this)">09:30 AM</button>
+                        <button id="hour-10" class="hour-button" onclick="selectButton('hour-button', this)">10:00 AM</button>
+                        <button id="hour-10-3" class="hour-button" onclick="selectButton('hour-button', this)">10:30 AM</button>
+                        <button id="hour-11" class="hour-button" onclick="selectButton('hour-button', this)">11:00 AM</button>
+                        <button id="hour-11-3" class="hour-button" onclick="selectButton('hour-button', this)">11:30 AM</button>
+                        <button id="hour-12" class="hour-button" onclick="selectButton('hour-button', this)">12:00 PM</button>
+                        <button id="hour-12-3" class="hour-button" onclick="selectButton('hour-button', this)">12:30 PM</button>
+                        <button id="hour-1" class="hour-button" onclick="selectButton('hour-button', this)">13:00 PM</button>
+                        <button id="hour-1-3" class="hour-button" onclick="selectButton('hour-button', this)">13:30 PM</button>
+                        <button id="hour-2" class="hour-button" onclick="selectButton('hour-button', this)">14:00 PM</button>
+                        <button id="hour-2-3" class="hour-button" onclick="selectButton('hour-button', this)">14:30 PM</button>
+                        <button id="hour-3" class="hour-button" onclick="selectButton('hour-button', this)">15:00 PM</button>
+                        <button id="hour-3-3" class="hour-button" onclick="selectButton('hour-button', this)">15:30 PM</button>
+                    </div>                
                     
                 </div>
                 
@@ -121,7 +124,7 @@
                 <!-- listbox que muestra dentro los doctores disponibles según consulta al api -->
                 <div id="texto-cita" class="agendar-citas-box-2-texto-doctor agendar-citas-box-2-e"></div>
                 <!-- texto dinámico que se va llenado con los valores seleccionado de la cita -->
-                <div id="button-agendar-cita" class="agendar-citas-box-2-button-agendar agendar-citas-box-2-e"></div>
+                <div id="button-agendar-cita" class="agendar-citas-box-2-button-agendar agendar-citas-box-2-e"> </div>
 
             </div>
         </div>
@@ -170,9 +173,11 @@
         </div>
     </footer>
     
+    <script src="../Scripts/user-status.js"></script>
     <script src="../Scripts/modal.js"></script>
-    <script src="../Scripts/fecha-nacimiento.js"></script>
-    <script src="../Scripts/doctores.js"></script>
-    <script src="../Scripts/doctores.js"></script>
+    <script src="../Scripts/agendar-citas.js"></script>
+    <script src="../Scripts/generic.js"></script>
+
+    <!--<script src="../Scripts/citas.js"></script>-->
 </body>
 </html>
